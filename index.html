@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Budget Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</head>
+
+<body  style="background-image: url(https://i.pinimg.com/564x/d3/7b/2e/d37b2e5fe1ed85f13795f746bedb4282.jpg); background-repeat: no-repeat; background-size: cover;">
+    <div class="header">
+        <div class="logo"><h2><box-icon name='wallet'></box-icon>Mybuddycal</h2></div>
+        <div class="user">
+           
+            <box-icon style="margin-top: 12px;" type='solid' name='user'></box-icon><p id="usernamez">  </p><button onclick="logout()">Logout</button></div>
+        
+        
+    </div>
+    <div class="mainbody">
+        <div class="info">
+            <h2>Personal Info</h2>
+        </div>
+        <div class="infobody">
+        <div class="profilephoto">
+            <img width="250px" src="https://www.getillustrations.com/packs/3d-avatar-illustrations/male/_1x/Avatar,%203D%20_%20man,%20male,%20people,%20person,%20hairstyle,%20turtleneck_sm.png" alt="">
+        </div>
+        <div class="name">
+            <p id="usernamey"></p>
+            <P id="mobiley"></P>
+            <p id="emialy"></p>
+            <p id="joby"></p>
+        </div>
+      
+        <div class="netbalance">
+            <div id="results">
+                <h3>Total Budget: ₹0.00</h3>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="mainbody">
+    <h2>Budget Calculator </h2>
+    <div class="container">
+        <button class="green"  onclick="showIncomeDialog()">Add Income</button>
+        <button class="red"  onclick="showExpenseDialog()">Add Expense </button>
+        
+        <div>
+            <h3>Income List</h3>
+            <table id="income-list">
+                <thead>
+                    <tr>
+                        <th>Source</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div>
+            <h3>Expense List</h3>
+            <table id="expenses-list">
+                <thead>
+                    <tr>
+                        <th>Source</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        
+    </div>
+
+    <div class="dialog-container" id="income-dialog-container">
+        <div class="dialog">
+            <h3>Add Income</h3>
+            <input type="text" id="income-source-input" placeholder="Source of Income">
+            <input type="number" id="income-amount-input" placeholder="Amount">
+            <input type="date" id="income-date-input" placeholder="Date">
+            <button class="buttongreen" onclick="addIncome()">Add</button>
+            <button class="buttonorange" onclick="closeIncomeDialog()">Cancel</button>
+        </div>
+    </div>
+
+    <div class="dialog-container" id="expense-dialog-container">
+        <div class="dialog">
+            <h3>Add Expense</h3>
+            <input type="text" id="expense-source-input" placeholder="Expense Source">
+            <input type="number" id="expense-amount-input" placeholder="Amount">
+            <input type="date" id="expense-date-input" placeholder="Date">
+            <button class="buttongreen" onclick="addExpense()">Add</button>
+            <button  class="buttonorange" onclick="closeExpenseDialog()">Cancel</button>
+        </div>
+    </div>
+    <div class="dialog-container" id="edit-dialog-container">
+        <div class="dialog">
+            <h3>Edit</h3>
+            <input type="text" id="edit-source-input" placeholder="Source">
+            <input type="number" id="edit-amount-input" placeholder="Amount">
+            <input type="date" id="edit-date-input" placeholder="Date">
+            <button class="buttongreen" onclick="updateItem()">Update</button>
+            <button class="buttonorange" onclick="closeEditDialog()">Cancel</button>
+        </div>
+    </div>
+
+    <div class="dialog-container" id="confirm-delete-dialog">
+        <div class="dialog">
+            <h3>Are you sure?</h3>
+            <button class="buttongreen" onclick="deleteConfirmed()">Yes</button>
+            <button class="buttonorange" onclick="closeConfirmDeleteDialog()">No</button>
+        </div>
+    </div>
+   
+</div>
+<div class="footer">
+    
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+ 
+
+    <div class="footer-basic">
+        <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <ul style="display: flex;" class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">Mybuddycal© 2023</p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+</div>
+    <script src="./script.js">
+       
+
+
+    </script>
+    
+</body>
+</html>
